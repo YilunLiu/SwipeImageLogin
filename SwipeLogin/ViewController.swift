@@ -12,6 +12,8 @@ let pageNumber = 3
 let btnPadding: CGFloat = 40
 let btnWidth: CGFloat = 100
 let btnHeight: CGFloat = 35
+let pageControlWidth: CGFloat = 60
+let pageControlHeight: CGFloat = 20
 class ViewController: UIViewController,UIGestureRecognizerDelegate {
 
     
@@ -72,6 +74,11 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         loginInBtn.setTitle("Login", forState: UIControlState.Normal)
         view.addSubview(loginInBtn)
         
+        pageControl = UIPageControl()
+        pageControl.numberOfPages = pageNumber
+        pageControl.frame = CGRectMake(self.view.frame.width/2 - pageControlWidth/2, self.view.frame.height*4/5, pageControlWidth, pageControlHeight)
+        view.addSubview(pageControl)
+
         
         
         // Do any additional setup after loading the view.
@@ -113,6 +120,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
             self.background.alpha = 1
             self.background.image = self.images[self.index]
             self.backgroundAnimation.alpha = 0.0
+            self.pageControl.currentPage = self.index
         }
         
     }
